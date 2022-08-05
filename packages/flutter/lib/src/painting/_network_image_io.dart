@@ -111,9 +111,6 @@ class NetworkImage extends image_provider.ImageProvider<image_provider.NetworkIm
 
       return decode(bytes);
     } catch (e) {
-      // Depending on where the exception was thrown, the image cache may not
-      // have had a chance to track the key in the cache at all.
-      // Schedule a microtask to give the cache a chance to add the key.
       scheduleMicrotask(() {
         PaintingBinding.instance.imageCache.evict(key);
       });
