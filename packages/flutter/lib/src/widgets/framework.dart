@@ -4473,7 +4473,7 @@ abstract class Element extends DiagnosticableTree implements BuildContext {
           ];
           if (owner!._debugCurrentBuildTarget != null)
             information.add(owner!._debugCurrentBuildTarget!.describeWidget('The widget which was currently being built when the offending call was made was'));
-          throw FlutterError.fromParts(information);
+        throw FlutterError.fromParts(information);
         }
         assert(dirty); // can only get here if we're not in scope, but ignored calls are allowed, and our call would somehow be ignored (since we're already dirty)
       } else if (owner!._debugStateLocked) {
